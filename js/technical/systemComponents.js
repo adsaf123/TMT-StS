@@ -24,8 +24,9 @@ var systemComponents = {
 						showNavTab(layer, prev)
 						showTab('none')
 					}
-					else
-						showTab(layer, prev)
+					else {
+						gameHandler.switchTabs()
+					}
 				}
 				else {run(layers[layer].onClick, layers[layer])}
 			}"

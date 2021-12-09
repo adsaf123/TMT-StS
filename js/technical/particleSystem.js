@@ -15,6 +15,8 @@ function makeParticles(data, amount=1, type = "normal") {
                 case 'update':
                     particle[thing] = data[thing]
                     break;
+                case 'id':
+                    break;
                 default:
                     particle[thing]=run(data[thing], data, x)
                     
@@ -59,7 +61,7 @@ function updateParticles(diff) {
             particle.x += particle.xVel
             particle.y += particle.yVel
             particle.speed = Math.sqrt(Math.pow(particle.xVel, 2) + Math.pow(particle.yVel, 2))
-            particle.dir = atan(-particle.xVel/particle.yVel)
+            //particle.dir = atan(-particle.xVel/particle.yVel)
             particle.yVel += particle.gravity
         }
 	}
@@ -89,9 +91,10 @@ const newParticles = {
             height: 35,
             image: "resources/genericParticle.png",
             angle: 0,
-            spread: 30,
-            offset: 10,
-            speed: 15,
+            dir: 0,
+            spread: 0,
+            offset: 0,
+            speed: 0,
             xVel: 0,
             yVel: 0,
             rotation: 0,

@@ -2,12 +2,12 @@ let modInfo = {
 	name: "Slay The Tree",
 	id: "adsaf-StT",
 	author: "adsaf",
-	pointsName: "points",
-	modFiles: ["tree.js", "game-utils.js", "cards-utils.js", "warrior/cards.js", "layers.js"],
+	pointsName: "scraps",
+	modFiles: ["tree.js", "game-utils.js", "cards-utils.js", "warrior/cards.js", "main.js"],
 
 	discordName: "",
 	discordLink: "",
-	initialStartPoints: new Decimal (10), // Used for hard resets and new players
+	initialStartPoints: new Decimal (1), // Used for hard resets and new players
 	offlineLimit: 1,  // In hours
 }
 
@@ -52,7 +52,7 @@ function addedPlayerData() { return {
 
 // Display extra things at the top of the page
 var displayThings = [
-	function() {return "Enemy intends to attack for " + (5 * (1.2**game.difficulty)).toString()}
+	function() {return "Enemy intends to attack for " + format((5 * (1.2**game.difficulty)))}
 ]
 
 // Determines when the game "ends"

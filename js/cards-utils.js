@@ -1,5 +1,8 @@
-var generateCard = function(energy, skin, text, evokeFunction) {
+var generateCard = function(name, energy, skin, text, evokeFunction) {
     return {
+        isCard: true,
+        dir: 0,
+        name: name,
         time: 1e10,
         x: 500,
         y: 500,
@@ -10,6 +13,8 @@ var generateCard = function(energy, skin, text, evokeFunction) {
         handID: -1,
         image: skin,
         textParticle: {
+            isText: true,
+            dir: 0,
             handID: -1,
             time: 1e10,
             image: "",
@@ -27,11 +32,11 @@ var generateCard = function(energy, skin, text, evokeFunction) {
             if (game.player.energy >= energy && this.time >= 2)
             {
                 game.player.energy -= energy
+                this.time = .3
+                this.textParticle.time = .3
+                game.discardPile.push(game.hand.find(v => v.handID == this.handID))
+                game.hand = game.hand.filter((v, i) => v.handID != this.handID)
                 evokeFunction()
-                this.time = 1;
-                this.textParticle.time = 1;
-                game.discardPile.push(game.hand[this.handID])
-                game.hand = game.hand.filter((v, i) => i != this.handID)
             }
         },
 
